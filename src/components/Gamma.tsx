@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { calculateGamma } from "../utils/func";
+import { calculateGamma } from "../utils/common";
 import CustomTable from "./Table";
 
 function Gamma() {
@@ -11,6 +11,7 @@ function Gamma() {
         <>
             <CustomTable
                 data={gammas}
+                prefix={"Gamma"}
             />
         </>
     )

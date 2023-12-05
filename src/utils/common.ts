@@ -1,10 +1,10 @@
 import {WineData} from "../data/wineData";
 import { IWine } from "./interfaces";
 
-type Type = "gamma" | "Flavanoids";
-
+// process data for mean, median and mode calculation
 export function calculateTotal(dataList: any, type: any) {
-    const total: any = {}
+    const total: any = {};
+    // segregate data according to class
     for (let data of dataList) {
         if (total[data["Alcohol"]]) {
             total[data["Alcohol"]]["total"] += +data[type];
@@ -19,6 +19,7 @@ export function calculateTotal(dataList: any, type: any) {
         }
     }
     
+    // find mean, median and mode
     for (const classType in total) {
         const MEAN = calculateMean(total[classType]);
         const MEDIAN = calculateMedian(total[classType]);
@@ -32,10 +33,12 @@ export function calculateTotal(dataList: any, type: any) {
     return total;
 }
 
+// calculate the the mean
 export function calculateMean({total, count}: any) {
     return total/count;
 }
 
+// calculate the median
 export function calculateMedian({count, values}: any) {
     values = values.sort((a: number, b: number) => a-b)
     if (count%2===0) {
@@ -49,6 +52,7 @@ export function calculateMedian({count, values}: any) {
     }
 }
 
+// calculate the mode
 export function calculateMode({values}: any) {
     const sortedVal = values.sort((a: any, b: any) => a-b);
     const counts: any = {};
@@ -73,10 +77,12 @@ export function calculateMode({values}: any) {
     return "N/A"
 }
 
+// calculate the flavonoids data
 export function calculateFlavanoid() {
     return calculateTotal(WineData, "Flavanoids")
 }
 
+// calculate gammas data
 export function calculateGamma() {
     const GAMMA_DATA: IWine[] = WineData.map((elem: IWine, index: number): IWine => {
         elem["gamma"] = gamma(elem);
@@ -86,6 +92,7 @@ export function calculateGamma() {
     return calculateTotal(GAMMA_DATA, "gamma");
 }
 
+// calculate gamma
 export function gamma({Ash, Hue, Magnesium}: any) {
     return +((+Ash*+Hue)/+Magnesium).toFixed(3);
 }

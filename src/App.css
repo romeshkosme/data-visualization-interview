@@ -23,6 +23,7 @@
 }
 .table-header {
     background: #b8c1ec;
+    max-width: 140px;
     font-weight: 500;
     font-size: large;
     color: #232946;
@@ -32,9 +33,6 @@
     text-align: center;
 }
 .cell-ellipses {
-    width: 60px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: start;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }

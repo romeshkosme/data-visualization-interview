@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { calculateFlavanoid } from "../utils/func";
+import { calculateFlavanoid } from "../utils/common";
 import CustomTable from "./Table";
 
 function Flavanoids() {

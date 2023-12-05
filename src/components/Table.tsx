@@ -1,8 +1,5 @@
-import { IWine } from "../utils/interfaces";
-
-type classType = "Flavanoids" | "gamma";
-
-function CustomTable({data}: any) {
+function CustomTable({data, prefix}: any) {
+    const keys = data && Object.keys(data).map((elem) => +elem)
     return (
         <>
             <section className="custom-table">
@@ -11,17 +8,17 @@ function CustomTable({data}: any) {
                         <span>Measure</span>
                     </div>
                     <div className="table-cell table-header">
-                        <span>Mean</span>
+                        <span>{prefix} Mean</span>
                     </div>
                     <div className="table-cell table-header">
-                        <span>Median</span>
+                        <span>{prefix} Median</span>
                     </div>
                     <div className="table-cell table-header">
-                        <span>Mode</span>
+                        <span>{prefix} Mode</span>
                     </div>
                 </div>
                 <div className="table-part-two">
-                    {data && Object.keys(data).map((classType: any, index: number) => (
+                    {keys && keys.map((classType: number, index: number) => (
                         <div key={`class-column class-${index}`}>
                             <div className="table-cell table-header">
                                 <span>Class {classType}</span>
