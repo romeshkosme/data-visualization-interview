@@ -1,3 +1,7 @@
+import { IWine } from "../utils/interfaces";
+
+type classType = "Flavanoids" | "gamma";
+
 function CustomTable({data}: any) {
     return (
         <>
@@ -28,8 +32,8 @@ function CustomTable({data}: any) {
                             <div className="table-cell table-data">
                                 <span>{data[classType]["median"]}</span>
                             </div>
-                            <div className="table-cell table-data">
-                                <span>{data[classType]["mode"]}</span>
+                            <div className="table-cell table-data cell-ellipses" title={data[classType]["mode"].join(", ")}>
+                                <span>{data[classType]["mode"].join(", ")}</span>
                             </div>
                         </div>
                     ))}

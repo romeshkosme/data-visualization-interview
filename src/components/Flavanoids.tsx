@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { calculateFlavanoid } from "../utils/func";
 import CustomTable from "./Table";
 

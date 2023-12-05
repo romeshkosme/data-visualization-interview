@@ -37,41 +37,39 @@ export function calculateMean({total, count}: any) {
 }
 
 export function calculateMedian({count, values}: any) {
+    values = values.sort((a: number, b: number) => a-b)
     if (count%2===0) {
         const firstIndex = (count)/2;
-        const secondIndex = firstIndex+1;
-        const mean = (values[firstIndex]+values[secondIndex])/2;
+        const secondIndex = firstIndex-1;
+        const mean = ((+values[firstIndex])+(+values[secondIndex]))/2;
         return mean;
     } else {
         const index: number = (count+1)/2;
-        return values[index]
+        return values[index-1]
     }
 }
 
-export function calculateMode({count, values}: any) {
-    const sortedVal = values.sort((a: number, b: number) => a-b);
-
-    let counter: number = 0, 
-        unique: number = Infinity,
-        max: number = 0,
-        mode :number[] = [];
-    for (let i = 0; i < count; i++) {
-        // unique = unique === undefined || unique !== values[i] ? values[i] : unique;
-        if (unique === undefined || unique !== sortedVal[i]) {
-            unique = sortedVal[i];
-            counter = 1;
-        } else if (unique === values[i]) {
-            counter++;
-            if (counter > 1 && counter > max) {
-                mode.pop();
-                mode.push(sortedVal[i]);
-            } else if (counter > 1 && counter === max) {
-                mode.push(sortedVal[i]);
+export function calculateMode({values}: any) {
+    const sortedVal = values.sort((a: any, b: any) => a-b);
+    const counts: any = {};
+    for (let i = 0; i < sortedVal.length; i++) {
+        counts[sortedVal[i]] = (counts[sortedVal[i]] || 0) + 1
+    }
+    let max = 0;
+    let mode: any = [];
+    for (var key in counts) {
+        if (counts.hasOwnProperty(key)) {
+            if (counts[key] > max) {
+                max = counts[key];
+                mode = [+key];
+            } else if (counts[key] === max) {
+                max = counts[key];
+                mode.push(+key);
             }
         }
     }
 
-    if (mode.length > 0) return mode.map((elem, index) => elem.toFixed(3));
+    if (mode.length > 0) return mode;
     return "N/A"
 }
 
@@ -89,5 +87,5 @@ export function calculateGamma() {
 }
 
 export function gamma({Ash, Hue, Magnesium}: any) {
-    return (+Ash*+Hue)/+Magnesium;
+    return +((+Ash*+Hue)/+Magnesium).toFixed(3);
 }

@@ -31,3 +31,10 @@
     background-color: #eebbc3;
     text-align: center;
 }
+.cell-ellipses {
+    width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: start;
+}
