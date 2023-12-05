@@ -1,7 +1,10 @@
 # Manufac Analytics Assessment completed
 
 Command to run/start: yarn start
+
 Commant to build: yarn build
+
+Link (Deployed on Netlify): https://profound-pavlova-37da00.netlify.app/
 
 ## Mean, Median and Mode of Flavanoids
 
