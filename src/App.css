@@ -1,1 +1,33 @@
-
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.custom-table {
+    display: flex;
+    cursor: default;
+    margin: 20px;
+}
+.table-part-two {
+    display: flex;
+}
+.table-cell {
+    height: 25px;
+    max-width: 80px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table-header {
+    background: #b8c1ec;
+    font-weight: 500;
+    font-size: large;
+    color: #232946;
+}
+.table-data {
+    background-color: #eebbc3;
+    text-align: center;
+}
